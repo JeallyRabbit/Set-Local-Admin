@@ -1,5 +1,6 @@
 @echo off
-net user administrator $$AdminIT
-net user administrator /active:yes
-net user %username% /active:no
-pause
+echo Podaj haslo lokalnego admina
+powershell -command "$password = Read-Host -AsSecureString"
+powershell -command "net user Administrator $password"
+powershell -command "Disable-LocalUser $username"
+Pause
